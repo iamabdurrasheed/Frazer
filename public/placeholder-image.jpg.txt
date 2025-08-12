@@ -1,0 +1,8 @@
+# Placeholder Image
+This file represents a placeholder image for the e-commerce application.
+In a real application, this would be replaced with an actual image file.
+
+For development, you can:
+1. Use any image URL for product images
+2. Add actual image files to the public directory
+3. Use a service like Cloudinary or AWS S3 for image hosting
