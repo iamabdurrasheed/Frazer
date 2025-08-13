@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
-import { ObjectId } from 'mongodb';
+import { mockProducts } from '@/lib/mockData';
 
 export async function GET(
   request: NextRequest,
@@ -8,17 +7,10 @@ export async function GET(
 ) {
   try {
     const { id } = params;
-
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
-        { success: false, error: 'Invalid product ID' },
-        { status: 400 }
-      );
-    }
-
-    const db = await getDb();
-    const product = await db.collection('products').findOne({ _id: new ObjectId(id) });
-
+    
+    // Find product by id or _id field
+    const product = mockProducts.find(p => p.id === id || p._id === id);
+    
     if (!product) {
       return NextResponse.json(
         { success: false, error: 'Product not found' },
@@ -44,46 +36,29 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    // TODO: Add admin authentication middleware
     const { id } = params;
-
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
-        { success: false, error: 'Invalid product ID' },
-        { status: 400 }
-      );
-    }
-
-    const updateData = await request.json();
     
-    // Remove fields that shouldn't be updated directly
-    delete updateData._id;
-    delete updateData.createdAt;
+    const product = mockProducts.find(p => p.id === id || p._id === id);
     
-    // Add updatedAt timestamp
-    updateData.updatedAt = new Date();
-
-    // Convert numeric fields
-    if (updateData.price) updateData.price = parseFloat(updateData.price);
-    if (updateData.stock !== undefined) updateData.stock = parseInt(updateData.stock);
-    if (updateData.featured !== undefined) updateData.featured = Boolean(updateData.featured);
-
-    const db = await getDb();
-    
-    const result = await db.collection('products').updateOne(
-      { _id: new ObjectId(id) },
-      { $set: updateData }
-    );
-
-    if (result.matchedCount === 0) {
+    if (!product) {
       return NextResponse.json(
         { success: false, error: 'Product not found' },
         { status: 404 }
       );
     }
 
-    // Get updated product
-    const updatedProduct = await db.collection('products').findOne({ _id: new ObjectId(id) });
+    const updateData = await request.json();
+    
+    // For mock data, we'll just return the updated product
+    // In a real implementation, this would update the database
+    const updatedProduct = {
+      ...product,
+      ...updateData,
+      price: updateData.price ? parseFloat(updateData.price) : product.price,
+      stock: updateData.stock !== undefined ? parseInt(updateData.stock) : product.stock,
+      featured: updateData.featured !== undefined ? Boolean(updateData.featured) : product.featured,
+      updatedAt: new Date(),
+    };
 
     return NextResponse.json({
       success: true,
@@ -103,27 +78,19 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    // TODO: Add admin authentication middleware
     const { id } = params;
-
-    if (!ObjectId.isValid(id)) {
-      return NextResponse.json(
-        { success: false, error: 'Invalid product ID' },
-        { status: 400 }
-      );
-    }
-
-    const db = await getDb();
     
-    const result = await db.collection('products').deleteOne({ _id: new ObjectId(id) });
-
-    if (result.deletedCount === 0) {
+    const productIndex = mockProducts.findIndex(p => p.id === id || p._id === id);
+    
+    if (productIndex === -1) {
       return NextResponse.json(
         { success: false, error: 'Product not found' },
         { status: 404 }
       );
     }
 
+    // For mock data, we'll just return success
+    // In a real implementation, this would delete from the database
     return NextResponse.json({
       success: true,
       message: 'Product deleted successfully',

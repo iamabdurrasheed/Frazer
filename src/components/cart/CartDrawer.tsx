@@ -33,15 +33,15 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl">
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">
+          <div className="flex items-center justify-between p-4 border-b bg-gray-50">
+            <h2 className="text-lg font-bold text-gray-800">
               Shopping Cart ({getTotalItems()})
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full"
+              className="p-2 hover:bg-gray-200 rounded-full transition-colors"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -59,7 +59,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
             ) : (
               <div className="space-y-4">
                 {cart.map((item) => (
-                  <div key={item._id || item.id} className="flex items-center space-x-3 border-b pb-4">
+                  <div key={item._id || item.id} className="flex items-center space-x-3 border-b pb-4 bg-white rounded-lg p-3 shadow-sm">
                     <Image
                       src={item.image || '/placeholder-image.jpg'}
                       alt={item.title}
@@ -69,30 +69,30 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                     />
                     
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-medium text-gray-900 truncate">
+                      <h4 className="text-sm font-semibold text-gray-900 truncate">
                         {item.title}
                       </h4>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm font-medium text-blue-600">
                         {formatPrice(item.price)}
                       </p>
                       
                       <div className="flex items-center mt-2 space-x-2">
                         <button
                           onClick={() => updateQuantity(item._id || item.id!, Math.max(0, item.quantity - 1))}
-                          className="p-1 hover:bg-gray-100 rounded"
+                          className="p-1 hover:bg-gray-100 rounded border border-gray-300"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                           </svg>
                         </button>
-                        <span className="text-sm font-medium w-8 text-center">
+                        <span className="text-sm font-bold w-8 text-center text-gray-800">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(item._id || item.id!, item.quantity + 1)}
-                          className="p-1 hover:bg-gray-100 rounded"
+                          className="p-1 hover:bg-gray-100 rounded border border-gray-300"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                           </svg>
                         </button>
@@ -100,12 +100,12 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
                     </div>
                     
                     <div className="text-right">
-                      <p className="text-sm font-medium">
+                      <p className="text-sm font-bold text-gray-900">
                         {formatPrice(item.price * item.quantity)}
                       </p>
                       <button
                         onClick={() => removeFromCart(item._id || item.id!)}
-                        className="text-red-500 hover:text-red-700 text-xs mt-1"
+                        className="text-red-600 hover:text-red-800 text-xs mt-1 font-medium"
                       >
                         Remove
                       </button>
@@ -118,10 +118,10 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
           
           {/* Footer */}
           {cart.length > 0 && (
-            <div className="border-t p-4">
+            <div className="border-t p-4 bg-gray-50">
               <div className="flex justify-between items-center mb-4">
-                <span className="text-lg font-semibold">Total:</span>
-                <span className="text-xl font-bold">
+                <span className="text-lg font-bold text-gray-800">Total:</span>
+                <span className="text-xl font-black text-blue-600">
                   {formatPrice(getTotalPrice())}
                 </span>
               </div>

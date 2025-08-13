@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { mockProducts } from '@/lib/mockData';
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,45 +10,37 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category') || '';
     const featured = searchParams.get('featured');
 
-    const skip = (page - 1) * limit;
+    // Filter products based on query parameters
+    let filteredProducts = [...mockProducts];
 
-    const db = await getDb();
-    
-    // Build query
-    const query: any = {};
-    
     if (search) {
-      query.$or = [
-        { title: { $regex: search, $options: 'i' } },
-        { description: { $regex: search, $options: 'i' } },
-      ];
+      filteredProducts = filteredProducts.filter(product => 
+        product.title.toLowerCase().includes(search.toLowerCase()) ||
+        product.description.toLowerCase().includes(search.toLowerCase())
+      );
     }
-    
+
     if (category) {
-      query.category = category;
+      filteredProducts = filteredProducts.filter(product => 
+        product.category.toLowerCase() === category.toLowerCase()
+      );
     }
-    
+
     if (featured === 'true') {
-      query.featured = true;
+      filteredProducts = filteredProducts.filter(product => product.featured);
     }
 
-    // Get products with pagination
-    const products = await db
-      .collection('products')
-      .find(query)
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit)
-      .toArray();
+    // Apply pagination
+    const skip = (page - 1) * limit;
+    const paginatedProducts = filteredProducts.slice(skip, skip + limit);
 
-    // Get total count for pagination
-    const totalCount = await db.collection('products').countDocuments(query);
+    const totalCount = filteredProducts.length;
     const totalPages = Math.ceil(totalCount / limit);
 
     return NextResponse.json({
       success: true,
       data: {
-        products,
+        products: paginatedProducts,
         pagination: {
           currentPage: page,
           totalPages,
@@ -69,7 +61,6 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    // TODO: Add admin authentication middleware
     const {
       title,
       description,
@@ -88,9 +79,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const db = await getDb();
-
+    // For mock data, we'll just return a success response
+    // In a real implementation, this would save to the database
     const newProduct = {
+      _id: Date.now().toString(),
+      id: Date.now().toString(),
       title,
       description,
       price: parseFloat(price),
@@ -103,12 +96,9 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date(),
     };
 
-    const result = await db.collection('products').insertOne(newProduct);
-    const product = await db.collection('products').findOne({ _id: result.insertedId });
-
     return NextResponse.json({
       success: true,
-      data: product,
+      data: newProduct,
     });
   } catch (error) {
     console.error('Create product error:', error);

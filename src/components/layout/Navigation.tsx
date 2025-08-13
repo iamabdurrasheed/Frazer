@@ -16,34 +16,35 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <nav className="bg-white/95 backdrop-blur-lg shadow-xl border-b border-gray-200/20 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-28">
+      <nav className="bg-white/95 backdrop-blur-lg shadow-xl border-b border-gray-200/20 sticky top-0 z-50 w-full">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between h-20 sm:h-24 md:h-28">
             <div className="flex items-center">
               {/* Logo */}
               <Link href="/" className="flex-shrink-0">
-                <Logo size="md" showText={true} />
+                <Logo size="sm" showText={false} className="sm:hidden" />
+                <Logo size="md" showText={false} className="hidden sm:block" />
               </Link>
               
               {/* Desktop Navigation */}
-              <div className="hidden md:ml-16 md:flex md:space-x-2">
+              <div className="hidden md:ml-8 lg:ml-16 md:flex md:space-x-1 lg:space-x-2">
                 <Link
                   href="/"
-                  className="relative px-4 py-3 text-base font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 group"
+                  className="relative px-3 lg:px-4 py-3 text-sm lg:text-base font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 group"
                 >
                   Home
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </Link>
                 <Link
                   href="/products"
-                  className="relative px-4 py-3 text-base font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 group"
+                  className="relative px-3 lg:px-4 py-3 text-sm lg:text-base font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 group"
                 >
                   Products
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </Link>
                 <Link
                   href="/categories"
-                  className="relative px-4 py-3 text-base font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 group"
+                  className="relative px-3 lg:px-4 py-3 text-sm lg:text-base font-semibold text-gray-700 hover:text-blue-600 transition-all duration-300 group"
                 >
                   Categories
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>

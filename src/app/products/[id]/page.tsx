@@ -13,7 +13,7 @@ export default function ProductPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
-  const { addToCart, cart } = useCart();
+  const { addToCart, updateQuantity, cart } = useCart();
 
   useEffect(() => {
     if (params.id) {
@@ -38,8 +38,17 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     if (product) {
-      for (let i = 0; i < quantity; i++) {
-        addToCart(product);
+      // Check if product is already in cart
+      const existingItem = cart.find(item => (item._id === product._id || item.id === product.id));
+      if (existingItem) {
+        // If it exists, update the quantity by adding the selected quantity
+        const newQuantity = existingItem.quantity + quantity;
+        updateQuantity(product._id || product.id!, newQuantity);
+      } else {
+        // If it doesn't exist, add with the selected quantity
+        for (let i = 0; i < quantity; i++) {
+          addToCart(product);
+        }
       }
     }
   };
@@ -119,14 +128,14 @@ export default function ProductPage() {
             {product.stock > 0 ? (
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-green-600 font-medium">
+                <span className="text-green-700 font-semibold bg-green-50 px-3 py-1 rounded-full text-sm">
                   In Stock ({product.stock} available)
                 </span>
               </div>
             ) : (
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <span className="text-red-600 font-medium">Out of Stock</span>
+                <span className="text-red-700 font-semibold bg-red-50 px-3 py-1 rounded-full text-sm">Out of Stock</span>
               </div>
             )}
           </div>
@@ -134,24 +143,24 @@ export default function ProductPage() {
           {/* Quantity Selector */}
           {product.stock > 0 && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-800 mb-2">
                 Quantity
               </label>
               <div className="flex items-center space-x-3">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 border border-gray-300 rounded-md hover:bg-gray-50"
+                  className="p-2 border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 transition-colors"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                   </svg>
                 </button>
-                <span className="text-lg font-medium w-12 text-center">{quantity}</span>
+                <span className="text-lg font-semibold w-12 text-center bg-gray-50 py-1 rounded border">{quantity}</span>
                 <button
                   onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                  className="p-2 border border-gray-300 rounded-md hover:bg-gray-50"
+                  className="p-2 border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 transition-colors"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
                 </button>
