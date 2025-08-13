@@ -96,6 +96,7 @@ export default function RegisterPage() {
               required
               placeholder="Create a password (min. 6 characters)"
               minLength={6}
+              showPasswordToggle={true}
             />
             <Input
               label="Confirm Password"
@@ -105,6 +106,7 @@ export default function RegisterPage() {
               onChange={handleInputChange}
               required
               placeholder="Confirm your password"
+              showPasswordToggle={true}
             />
             
             <div className="text-xs text-gray-600">

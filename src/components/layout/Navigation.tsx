@@ -7,20 +7,12 @@ import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import Button from '@/components/ui/Button';
 import Logo from '@/components/ui/Logo';
-import CartDrawer from '@/components/cart/CartDrawer';
 
 const Navigation: React.FC = () => {
   const { user, logout } = useAuth();
   const { getTotalItems } = useCart();
   const { getWishlistCount } = useWishlist();
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleCheckout = () => {
-    setIsCartOpen(false);
-    // Navigate to cart page
-    window.location.href = '/cart';
-  };
 
   return (
     <>
@@ -94,8 +86,8 @@ const Navigation: React.FC = () => {
               </Link>
 
               {/* Cart Button */}
-              <button
-                onClick={() => setIsCartOpen(true)}
+              <Link
+                href="/cart"
                 className="relative p-2 text-gray-600 hover:text-blue-600 transition-all duration-300 group"
               >
                 <div className="relative">
@@ -109,7 +101,7 @@ const Navigation: React.FC = () => {
                   )}
                   <div className="absolute inset-0 bg-blue-600 rounded-full opacity-0 group-hover:opacity-20 transform scale-0 group-hover:scale-100 transition-all duration-300"></div>
                 </div>
-              </button>
+              </Link>
 
               {/* User Menu */}
               {user ? (
@@ -176,8 +168,8 @@ const Navigation: React.FC = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center space-x-3">
-              <button
-                onClick={() => setIsCartOpen(true)}
+              <Link
+                href="/cart"
                 className="relative p-3 text-gray-600 hover:text-blue-600 transition-all duration-300 group"
               >
                 <div className="relative">
@@ -190,7 +182,7 @@ const Navigation: React.FC = () => {
                     </span>
                   )}
                 </div>
-              </button>
+              </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="p-3 text-gray-600 hover:text-blue-600 transition-all duration-300 group"
@@ -243,6 +235,40 @@ const Navigation: React.FC = () => {
                 Contact
               </Link>
               
+              {/* Wishlist Link for Mobile */}
+              <Link
+                href="/wishlist"
+                className="flex items-center px-4 py-3 text-base font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                Wishlist
+                {getWishlistCount() > 0 && (
+                  <span className="ml-auto bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                    {getWishlistCount()}
+                  </span>
+                )}
+              </Link>
+              
+              {/* Cart Link for Mobile */}
+              <Link
+                href="/cart"
+                className="flex items-center px-4 py-3 text-base font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                Cart
+                {getTotalItems() > 0 && (
+                  <span className="ml-auto bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </Link>
+              
               {user ? (
                 <>
                   {user.role === 'admin' && (
@@ -286,13 +312,6 @@ const Navigation: React.FC = () => {
           </div>
         )}
       </nav>
-
-      {/* Cart Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        onCheckout={handleCheckout}
-      />
     </>
   );
 };

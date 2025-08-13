@@ -152,6 +152,7 @@ export default function LoginPage() {
                 onChange={handleInputChange}
                 required
                 placeholder="Enter your password"
+                showPasswordToggle={true}
               />
               
               <div className="flex items-center justify-between">

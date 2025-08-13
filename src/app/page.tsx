@@ -192,128 +192,144 @@ export default function Home() {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mt-6 rounded-full"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Link href="/products?category=hvac" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <Link href="/products?category=hvac" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 21l4-7 4 7M3 7l18 0M5 21l14 0M6 3h12v4H6z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 11v6" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">HVAC Products</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">Heating, ventilation, and air conditioning systems</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">HVAC Products</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">Heating, ventilation, and air conditioning systems</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=valves" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=valves" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v3m0 12v3m9-9h-3M3 12h3m15.364-6.364l-2.121 2.121M6.757 17.243l-2.122 2.121m12.728 0l-2.121-2.121M6.757 6.757L4.636 4.636" />
                       <circle cx="12" cy="12" r="3" strokeWidth={1.5} />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Valves</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">FGV, Kitz, and other premium valve brands</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Valves</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">FGV, Kitz, and other premium valve brands</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=electrical" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=electrical" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Electrical</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">ABB, WALTHER-WERKE, nVent Hoffman</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Electrical</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">ABB, WALTHER-WERKE, nVent Hoffman</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=plumbing" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=plumbing" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12h18m-9 4.5V7.5m0 9L7.5 12m4.5 4.5L16.5 12" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2m-4 8v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Plumbing & Fittings</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">Pipes, fittings, and plumbing accessories</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Plumbing & Fittings</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">Pipes, fittings, and plumbing accessories</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=adhesives" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=adhesives" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Adhesives & Lubricants</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">Industrial adhesives and lubricants</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Adhesives & Lubricants</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">Industrial adhesives and lubricants</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=pumps" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=pumps" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-6.219-8.56" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 0l3-3m-3 3l3 3" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Pump Spare Parts</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">Quality pump components and spares</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Pump Spare Parts</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">Quality pump components and spares</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=welding" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=welding" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Welding Accessories</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">Professional welding tools and accessories</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Welding Accessories</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">Professional welding tools and accessories</p>
+                  </div>
                 </div>
               </div>
             </Link>
 
-            <Link href="/products?category=thermal" className="group">
-              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105">
+            <Link href="/products?category=thermal" className="group h-full">
+              <div className="relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 lg:p-8 text-center border border-gray-100/50 backdrop-blur-sm transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="relative flex-1 flex flex-col">
+                  <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0">
+                    <svg className="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Raktherm</h3>
-                  <p className="text-gray-600 font-medium leading-relaxed">Thermal management solutions</p>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 lg:mb-3 group-hover:text-blue-600 transition-colors leading-tight">Raktherm</h3>
+                    <p className="text-sm lg:text-base text-gray-600 font-medium leading-relaxed">Thermal management solutions</p>
+                  </div>
                 </div>
               </div>
             </Link>
